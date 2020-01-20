@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Comprar Bolsas</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="wrapper">
+      <img class="logo" src="assets/images/logo.svg" alt="">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="comprar_bolsas.html" class="active">Compra una bolsa</a></li>
+        <li><a href="https://miwom.wom.cl/">Mi WOM</a></li>
+      </ul>
+    </div>
+  </header>
+  <section>
+    <div class="wrapper">
+      <div class="container">
+        <div class="container-bundle">
+          <h2>BOLSAS</h2>
+          <div class="divider-solid"></div>
+          <div class="bundle-wrapper">
+
+            <div class="bundle">
+              <div class="bundle-tag">datos</div>
+              <p>7GB + RRSS Ilimitadas en red 4G y 3G</p>
+              <div class="bundle-bottom">
+                <span>$5.000</span>
+                <button class="button comprar">comprar</button>
+              </div>
+            </div>
+            <div class="bundle">
+              <div class="bundle-tag">datos</div>
+              <p>7GB + RRSS Ilimitadas en red 4G y 3G</p>
+              <div class="bundle-bottom">
+                <span>$5.000</span>
+                <button class="button comprar">comprar</button>
+              </div>
+            </div>
+            <div class="bundle">
+              <div class="bundle-tag">datos</div>
+              <p>7GB + RRSS Ilimitadas en red 4G y 3G</p>
+              <div class="bundle-bottom">
+                <span>$5.000</span>
+                <button class="button comprar">comprar</button>
+              </div>
+            </div>
+            <div class="bundle">
+              <div class="bundle-tag">datos</div>
+              <p>7GB + RRSS Ilimitadas en red 4G y 3G</p>
+              <div class="bundle-bottom">
+                <span>$5.000</span>
+                <button class="button comprar">comprar</button>
+              </div>
+            </div>
+
+          </div>
+          <button class="btn purple-outline mx-auto">cargar más bolsas</button>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="container">
+        <div class="error">
+          <h2>¡UPS!<br> Algo ha fallado</h2>
+          <img src="assets/images/noun_paper_bag.svg" alt="">
+          <p>No hemos podido cargar la página, algo ha fallado, te sugerimos volver a intentarlo</p>
+          <button class="btn purple-outline mx-auto">volver a intentarlo</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="overlay-confirmacion"></div>
+  <div class="modal-confirmacion">
+    <div class="confirmacion-heading">
+      <h3>¿Estás segur@ que deseas comprar ésta bolsa?</h3>
+    </div>
+    <div class="confirmacion-info">
+      <p>7 GB + RRSS Ilimintadas en red 4G y 3G</p>
+      <span>$5.000</span>
+    </div>
+    <div class="container-button-between">
+      <button id="cancel" class="btn purple-outline btn-full-width">cancelar</button>
+      <button id="confirm" class="btn bubble-gum btn-full-width">continuar</button>
+    </div>
+  </div>
+  <footer>
+    <span><strong>WOM</strong> CHILE</span>
+    <p>Todos los derechos reservados 2019</p>
+  </footer>
+</body>
+<script>
+  window.onload = ()=>{
+    function modalConfirmacion(){
+      const modalConfirm = document.querySelector('.modal-confirmacion');
+      const overlayConfirm = document.querySelector('.overlay-confirmacion');
+      const buttonCancel = document.querySelector('#cancel');
+      const buttonConfirm = document.querySelector('#confirm');
+      const arr = [overlayConfirm,buttonCancel,buttonConfirm];
+
+      modalConfirm.style.display = 'flex';
+      setTimeout(() => {modalConfirm.classList.add('active');}, 20);
+      overlayConfirm.style.display = 'block';
+      setTimeout(() => {overlayConfirm.classList.add('active');}, 20);
+      
+      if(!modalConfirm.classList.contains('active')){
+        arr.forEach(o =>{
+          o.addEventListener('click', function(){
+            overlayConfirm.classList.remove('active');
+            setTimeout(() => {overlayConfirm.style.display = 'none';}, 150);
+            modalConfirm.classList.remove('active');
+            setTimeout(() => {modalConfirm.style.display = 'none';}, 150);
+          })
+        })
+      }
+    }
+
+    const btnBuy = document.querySelectorAll('.comprar');
+    btnBuy.forEach(btn => btn.addEventListener('click', modalConfirmacion))
+  }
+</script>
+</html>
